@@ -10,9 +10,36 @@ class CategoriesController extends Controller
     {
     }
     // hien thi danh sach chuyen muc - GET methd
-    public function index(){
-        return view('clients/categories/list');
+    public function index(Request $request){
+    //   $allData = $request->all();
+    //    echo $allData['name'];
+    //   dd($allData);
+
+    // * Lấy địa chỉ ip của request:
+    //$ip = $request->ip();
+    //echo $ip;
+
+    // * Lấy thông tin server
+    // $server = $request->server();
+    // dd($server) ;
+    
+    // * Lấy thông tin header:
+    //$heaader = $request->header();
+   // dd($heaader);
+
+   //* Lấy thông tin từ input
+   //$id = $request->input('id');
+   //echo $id;
+
+   $allInput = $request->input('id.0');
+   dd($allInput[1]);
+
+    
+
+
+
     }
+
     // Lay ra 1 chuyen muc theo id - GET method
     public function getCategory($id){
     return "chi tiet chuyen muc voi id: ".$id;
@@ -29,9 +56,9 @@ class CategoriesController extends Controller
     }
 
     // handle add category
-    public function handleCategory(){
-        return  redirect(route('categories.add'));
-        //return "handle category";
+    public function handleCategory(Request $request){
+        $allData = $request->all();
+        dd($request);
     }
 
     //show form them du lieu - GET method

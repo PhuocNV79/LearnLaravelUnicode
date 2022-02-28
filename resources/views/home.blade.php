@@ -15,6 +15,7 @@
     <main>
         <h1>Noi dung</h1>
         <h2>{{$content}}</h2>
+        <h2>{{$path}}</h2>
     </main>
 
     <footer>

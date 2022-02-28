@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+       
+
         $title = "Title học lập trình";
         $content = "Nội dung bài học";
+        $path = $request->path();
 
         // Truyền giá trị từ controller qua view
         // Cách 1:
@@ -20,7 +23,7 @@ class HomeController extends Controller
 
         // Cách 3:
         // use use Illuminate\Support\Facades\View;
-        return View::make('home', compact('title', 'content' ));
+        return View::make('home', compact('title', 'content', 'path'));
     }
 
     public function getProductById($id){
