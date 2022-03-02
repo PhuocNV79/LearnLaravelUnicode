@@ -99,6 +99,12 @@ Route::prefix('categories')->group(function (){
 
     //Xoa chuyen muc
     Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategory'])->name('categories.delete');
+
+    // Bài HTTP REQUEST
+    // hiển thị form upload
+    Route::get('/file', [CategoriesController::class, 'getFile'])->name('categories.file');
+    // hien thi form add du lieu
+    Route::post('/file', [CategoriesController::class, 'handleFile'])->name('categories.handlefile');
 });
 
 // Bài View

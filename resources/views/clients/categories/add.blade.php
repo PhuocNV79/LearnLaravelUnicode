@@ -2,7 +2,8 @@
 
 <form method="post" action="<?php echo route('categories.add')?>">
     <div>
-        <input type="text" name="category_name" placeholder="ten chuyen muc">
+         <input type="text" id="category_name" name="category_name" placeholder="ten chuyen muc" 
+        value="<?php echo old('category_name', 'abc xyz nbc'); ?>" > 
     </div>
     <div>
         <?php echo csrf_field()?>
