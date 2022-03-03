@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use  App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\BladeController;
 use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
@@ -109,6 +110,18 @@ Route::prefix('categories')->group(function (){
 
 // Bài View
 Route::get('san-pham/{id}',[HomeController::class, 'getProductById']);
+
+// Bài Blade 2
+Route::get('/blade', [BladeController::class, 'printNumber']);
+
+// Bài Blade 3
+// Master layout
+Route::prefix('/blade3')->group(function(){
+    Route::get('/master-layout', [BladeController::class, 'handleMasterLayout']);
+});
+
+
+
 
 
 //Admin route
