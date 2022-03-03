@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class BladeController extends Controller
+class BladeController6 extends Controller
 {
     public $data = [];
     

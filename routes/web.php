@@ -6,6 +6,7 @@ use  App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\BladeController;
+use App\Http\Controllers\BladeController6;
 use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
@@ -120,8 +121,10 @@ Route::prefix('/blade3')->group(function(){
     Route::get('/master-layout', [BladeController::class, 'handleMasterLayout']);
 });
 
-
-
+// Bài Blade 6
+Route::prefix('/blade6')->group(function(){
+    Route::get('/define-custom-directive', [BladeController6::class, 'defineCustomDirective']);
+});
 
 
 //Admin route

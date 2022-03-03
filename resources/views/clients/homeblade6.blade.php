@@ -14,8 +14,12 @@
         </div>
     </section>
     {{-- Bài Blade 6 --}}
-    @env('local')
-        <p>Moi truong dev</p>
+    @env('production')
+        <p>Moi truong production</p>
+    @elseenv('test')
+    <p>Moi truong test</p>
+    @elseenv('local')
+    <p>Moi truong local</p>
     @endenv
 @endsection
 
