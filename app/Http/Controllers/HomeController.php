@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Http\Response;
 
 class HomeController extends Controller
 {
@@ -29,5 +31,10 @@ class HomeController extends Controller
     public function getProductById($id){
         //return view('clients/product/detail', compact('id'));
         return view('clients.product.detail', compact('id'));
+    }
+
+    public function getArr() : array{
+        $arr = ['key1'=>"value1", 'key2'=>"value1",'key3'=>"value1",'key4'=>"value1"];
+        return $arr;
     }
 }

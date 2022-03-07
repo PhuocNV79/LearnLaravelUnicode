@@ -1,13 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use Illuminate\Http\Request;
-use  App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\Admin\ProductsController;
-use App\Http\Controllers\Admin\DashboardController;
+use Illuminate\Http\Response;
+
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\BladeController;
+use App\Http\Controllers\BladeController5;
 use App\Http\Controllers\BladeController6;
 use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\DashboardController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -121,6 +128,11 @@ Route::prefix('/blade3')->group(function(){
     Route::get('/master-layout', [BladeController::class, 'handleMasterLayout']);
 });
 
+// Bai 5 Blade
+Route::prefix('/blade5')->group(function(){
+    Route::get('/getAddForm', [BladeController5::class, 'getAddForm']);
+});
+
 // Bài Blade 6
 Route::prefix('/blade6')->group(function(){
     Route::get('/define-custom-directive', [BladeController6::class, 'defineCustomDirective']);
@@ -134,7 +146,41 @@ Route::middleware('auth.admin')-> prefix('admin')->group(function (){
     Route::resource('products', ProductsController::class)->middleware('auth.admin.product');
 });
 
+Route::get('/demo-respone', function(){
+    return '<h3>Hoc laravel</h3>';
+});
 
+Route::get('/convert-arr-to-json', function(){
+    $arr = ['a'=>1,'b'=>2,'c'=>3];
+    return $arr;
+});
+
+Route::get('/lay-thong-tin', [HomeController::class, 'getArr']);
+
+Route::get('/respone-instance', function(){
+    //$respone = new Response('Hoc lap tring', 404);
+    //dd($respone);
+
+  //  return $respone;
+
+    //use helper respone()
+    $respone = response('respone use helper', 205);
+   return response('respone use helper', 205);
+    //dd($respone);
+
+});
+
+Route::get('/respone-cookie', function(){
+    $respone = (new Response())->cookie('unicode', 'Trainning php', 20);
+    return $respone;
+});
+
+Route::get('/respone-view', function(){
+    //return view('clients.demo-test');
+
+    $respone = response()->view('clients.demo-test', ['title'=>'Learn Respone']);
+    return $respone;
+});
 
 
 
