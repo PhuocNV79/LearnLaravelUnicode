@@ -120,7 +120,13 @@ Route::prefix('/blade3')->group(function(){
     Route::get('/master-layout', [BladeController::class, 'handleMasterLayout']);
 });
 
+// Bai Validation
+Route::get('/validate', [HomeController::class, 'getvalidateForm']);
+Route::post('/validate', [HomeController::class, 'validateForm']);
 
+Route::get('/chay-duoc-roi-nhe', function(){
+    return '<h2 style="color: red">Chaỵ được rồi Bảo Ân nhé</h2>';
+});
 
 
 

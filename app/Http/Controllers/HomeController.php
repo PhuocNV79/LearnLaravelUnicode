@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use PhpParser\Node\Expr\FuncCall;
 
 class HomeController extends Controller
 {
+    public $data = [];
     public function index(Request $request){
        
 
@@ -29,5 +31,32 @@ class HomeController extends Controller
     public function getProductById($id){
         //return view('clients/product/detail', compact('id'));
         return view('clients.product.detail', compact('id'));
+    }
+
+    public function getValidateForm(){
+        $this->data['invalid'] = 'Du lieu khong hop le';
+        return view('form', $this->data);
+
+    }
+
+    public function validateForm(Request $request){
+        $rules = [
+            'tensanpham'=>'min:15|required',
+            'giasanpham'=>'required'
+        ];
+
+        // $message = [
+        //     'tensanpham.min'=>':attribute >= :min ky tu',
+        //     'tensanpham.required'=>'Ten san pham bat buoc nhap',
+        //     'giasanpham.required'=>'Gia san pham bat buoc nhap',
+        // ];
+
+        $message = [
+            'required'=>"truong :attribute bat buoc nhap",
+            'min'=> "truong :attribute >= :min ky tu" 
+        ];
+        $request->validate(
+           $rules , $message
+        );
     }
 }
