@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -26,8 +27,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'tensanpham'=>'min:15|required',
-            'giasanpham'=>'required',
-            'created_by'=>'min:10'
+            'giasanpham'=>'required'
         ];
     }
 
@@ -69,5 +69,10 @@ class ProductRequest extends FormRequest
             'created_at' => date('Y-m-d H:i:s'),
             'created_by' => 'Nguyen'
         ]);
+    }
+
+    protected function failedAuthorization()
+    {
+        throw new AuthorizationException('Khong co quyen truy cap');
     }
 }
