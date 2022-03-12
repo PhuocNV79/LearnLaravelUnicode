@@ -6,10 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public $data = [];
+
+    public function testConnectDB(){
+        $dataFromDB = DB::select('select * from persontb');
+        dd($dataFromDB);
+    }
+
     public function index(Request $request){
        
 
