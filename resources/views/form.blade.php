@@ -10,11 +10,16 @@
 </head>
 <body>
     <div class="container">
-        @if ($errors->any())
+        {{-- @if ($errors->any())
     <div class="alert alert-danger">
         {{ $invalid }}
     </div>
-    @endif
+    @endif --}}
+    @error('msg')
+    <div class="alert alert-danger">
+        {{ $message }}
+    </div>
+    @enderror
         <div class="col-6">
             <form action="" method="POST">
                 <div class="form-group">

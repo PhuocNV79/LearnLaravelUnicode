@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use PhpParser\Node\Expr\FuncCall;
+use App\Http\Requests\ProductRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
 class HomeController extends Controller
 {
@@ -39,11 +40,16 @@ class HomeController extends Controller
 
     }
 
-    public function validateForm(Request $request){
-        $rules = [
-            'tensanpham'=>'min:15|required',
-            'giasanpham'=>'required'
-        ];
+    public function validateForm(ProductRequest $request){
+
+
+        dd($request->all());    
+
+        // ----------------------------------------------------
+        // $rules = [
+        //     'tensanpham'=>'min:15|required',
+        //     'giasanpham'=>'required'
+        // ];
 
         // $message = [
         //     'tensanpham.min'=>':attribute >= :min ky tu',
@@ -51,12 +57,12 @@ class HomeController extends Controller
         //     'giasanpham.required'=>'Gia san pham bat buoc nhap',
         // ];
 
-        $message = [
-            'required'=>"truong :attribute bat buoc nhap",
-            'min'=> "truong :attribute >= :min ky tu" 
-        ];
-        $request->validate(
-           $rules , $message
-        );
+        // $message = [
+        //     'required'=>"truong :attribute bat buoc nhap",
+        //     'min'=> "truong :attribute >= :min ky tu" 
+        // ];
+        // $isvalidForm = $request->validate(
+        //    $rules , $message
+        // );
     }
 }
