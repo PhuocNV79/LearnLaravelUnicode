@@ -8,13 +8,23 @@ use App\Http\Requests\ProductRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Students;
+
 class HomeController extends Controller
 {
     public $data = [];
 
     public function testConnectDB(){
-        $dataFromDB = DB::select('select * from persontb');
-        dd($dataFromDB);
+        //$people = DB::select('select * from persontb where name like  ? and address like  ?', ['%nguyen%', '% tho %']);
+        $people = DB::select('select * from persontb where name = :name and email like :email; ', ['name'=>'nguyen van phuoc', 'email'=>'%phuoc3%']);
+        //dd($people);
+        return response()->json($people);
+    }
+
+    public function insertPersonToDB(){
+        //$person = DB::insert("insert into persontb values (7, 'nguyen van phuc', 'phuoc6email', 'dien ban', '0909877654')");
+        $person = DB::insert("insert into persontb values (:id, 'nguyen van phuc', 'phuoc6email', 'dien ban', '0909877654')", ['id'=>8]);
+        dd($person);
     }
 
     public function index(Request $request){

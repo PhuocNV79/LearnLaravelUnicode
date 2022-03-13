@@ -128,6 +128,7 @@ Route::post('/validate', [HomeController::class, 'validateForm']);
 
 // connect to DB
 Route::get('testConnectDB', [HomeController::class, 'testConnectDB']);
+Route::get('insertPersonToDB', [HomeController::class, 'insertPersonToDB']);
 
 
 
