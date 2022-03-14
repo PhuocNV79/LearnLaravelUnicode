@@ -14,6 +14,21 @@ class HomeController extends Controller
 {
     public $data = [];
 
+    // su dung Query Builder
+
+    public function getALlPeople(){
+       // $people = DB::table('persontb')->select('name as HoVaTen','phone')->get();
+
+       //where
+       // $data = DB::table('persontb')->where('name', 'nguyen van phuoc')->pluck('name');
+       
+       //$data = DB::table('persontb')->where('name','like' ,'%van%')->pluck('name');
+       $data = DB::table('persontb')->where('email','like' ,'%phuoc%')->where('address', 'dien ban')->get();
+       $data = DB::table('persontb')->where('email','like' ,'%phuoc%')->orWhere('address', 'dien ban')->get();
+       //$data = DB::table('persontb')->where('name','like' ,'%van%')->update(['phone'=>'0905889746', 'name'=>'nguyen van phuoc']);
+        dd($data);
+    }
+
     public function testConnectDB(){
         //$people = DB::select('select * from persontb where name like  ? and address like  ?', ['%nguyen%', '% tho %']);
         $people = DB::select('select * from persontb where name = :name and email like :email; ', ['name'=>'nguyen van phuoc', 'email'=>'%phuoc3%']);
@@ -26,6 +41,8 @@ class HomeController extends Controller
         $person = DB::insert("insert into persontb values (:id, 'nguyen van phuc', 'phuoc6email', 'dien ban', '0909877654')", ['id'=>8]);
         dd($person);
     }
+
+    
 
     public function index(Request $request){
        
